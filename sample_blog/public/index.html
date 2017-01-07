@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="SampleBlogApp">
+<head>
+	<title>Sample Blog</title>
+	<link rel="stylesheet" type="text/css" href="libs/css/bootstrap/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="app/css/style.css">
+</head>
+<body>
+	<div class="container" ng-controller="SampleBlogCtrl">
+		<h2>Sample Blog</h2>
+		<hr>
+		<form>
+			<div class="form-group">
+				<input ng-model="post.blogtitle" type="text" name="title" class="form-control" 
+				placeholder="Title" id="txt_title">
+			</div>
+			<div class="form-group">
+				<textarea ng-model="post.blogbody" class="form-control" name="blog_body" rows="3" 
+				placeholder="Body.." id="txt_body"></textarea>
+			</div>
+			<button type="button" class="btn btn-primary" ng-click="createPost(post)">Submit</button>
+			<button type="button" class="btn btn-warning btn-update" ng-click="updatePost(post._id, post)">
+			Update</button>
+		</form>
+		<hr>
+		<div ng-repeat="post in posts">
+			<h3>
+				{{post.blogtitle}}
+				
+				<a class="pull-right" ng-click="editPost(post._id, post)">
+					<span class="edit-post">Edit</span>
+				</a>
+				<a class="pull-right" ng-click="deletePost(post._id, post)">
+					<span class="remove-post">X</span>
+				</a>
+			</h3>
+			<em>{{post.posted}}</em>
+			<p>{{post.blogbody}}</p>
+		</div>
+		
+	</div>
+	<script type="text/javascript" src="libs/js/angular.min.js"></script>
+	<script type="text/javascript" src="libs/js/jquery-3.1.0.min.js"></script>
+
+	<script type="text/javascript" src="app/app.js"></script>
+</body>
+</html>
